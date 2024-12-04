@@ -1,5 +1,12 @@
+// Création de l'élément body
 const body = document.body;
 
+let isRotating = false; // Indique si le dé est en train de tourner
+
+// Création du conteneur du cube
+const container = document.createElement('div');
+container.id = 'cube-container';
+body.appendChild(container);
 
 // Fonction pour créer un point
 function createDot(position) {
@@ -37,7 +44,6 @@ function createCube() {
 }
 
 // Ajouter le cube au conteneur
-const container = document.getElementById('cube-container');
 const cube = createCube();
 container.appendChild(cube);
 
@@ -48,22 +54,28 @@ dice.classList.add('btn-de');
 body.appendChild(dice);
 
 // Fonction pour faire tourner le dé
+
 function rotateCubeRandomly() {
-  const randomX = Math.floor(Math.random() * 4) * 90; // Multiple de 90
-  const randomY = Math.floor(Math.random() * 4) * 90; // Multiple de 90
+  const randomX = Math.floor(Math.random() * 4 + 4) * 90; // Multiple de 90
+  const randomY = Math.floor(Math.random() * 4 + 4) * 90; // Multiple de 90
   cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg)`;
+}
+function rotateCubeRandomly() {
+  if (isRotating) return; // Bloque si une rotation est en cours
+
+  isRotating = true; // Marque la rotation comme en cours
+
+  const randomX = (Math.floor(Math.random() * 4) + 4) * 90; // 4 tours complets + une orientation aléatoire
+  const randomY = (Math.floor(Math.random() * 4) + 4) * 90;
+
+  cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg)`;
+
+setTimeout(() => {
+  isRotating = false; // Autorise une nouvelle rotation
+}, 500); // 2 secondes = durée de transition définie dans le CSS
 }
 
 // Ajouter un événement au bouton pour lancer le dé
 dice.addEventListener('click', () => {
   rotateCubeRandomly();
 });
-
-// Initialiser la rotation avec un intervalle
-const intervalId = setInterval(rotateCubeRandomly, 2000);
-
-// Arrêter la rotation après 10 secondes
-setTimeout(() => {
-  clearInterval(intervalId); // Arrête l'intervalle
-  console.log('Le dé a arrêté de tourner.');
-}, 10000);
