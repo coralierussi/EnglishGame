@@ -104,7 +104,7 @@ startButton.style.padding = '10px 20px';
 startButton.style.fontSize = '16px';
 
 const answeredButton = document.createElement('button');
-answeredButton.textContent = "Répondu";
+answeredButton.textContent = "Answer";
 answeredButton.style.padding = '10px 20px';
 answeredButton.style.fontSize = '16px';
 answeredButton.style.display = 'none'; // Caché par défaut
@@ -145,7 +145,7 @@ startButton.addEventListener('click', () => {
 // Action pour le bouton "Répondu"
 answeredButton.addEventListener('click', () => {
   clearInterval(timerInterval); // Arrête le timer
-  const audio = new Audio('https://www.soundjay.com/button/beep-07.mp3'); // Exemple de son
+  const audio = new Audio("links/CRWDApls_Applaudissements 1 (ID 2363)_LS.mp3"); // Exemple de son
   audio.play();
 });
 
