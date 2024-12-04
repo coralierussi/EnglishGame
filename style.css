@@ -1,61 +1,71 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: 600;
+}
+
+.btn-de{
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #616467;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 42%;
+}
+
+#cube-container {
+  perspective: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.cube {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-  }
-  
-  #cube-container {
-    perspective: 800px;
-  }
-  
-  .cube {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .face {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .face .dot {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: black;
-    border-radius: 50%;
-  }
-  
-  /* Position des points */
-  .center { top: 45%; left: 45%; }
-  .top-left { top: 15%; left: 15%; }
-  .top-right { top: 15%; right: 15%; }
-  .bottom-left { bottom: 15%; left: 15%; }
-  .bottom-right { bottom: 15%; right: 15%; }
-  .center-left { top: 45%; left: 15%; }
-  .center-right { top: 45%; right: 15%; }
-  
-  /* Faces du cube */
-  .front  { transform: translateZ(50px); }
-  .back   { transform: rotateY(180deg) translateZ(50px); }
-  .left   { transform: rotateY(-90deg) translateZ(50px); }
-  .right  { transform: rotateY(90deg) translateZ(50px); }
-  .top    { transform: rotateX(90deg) translateZ(50px); }
-  .bottom { transform: rotateX(-90deg) translateZ(50px); }
-  
+.face .dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+/* Position des points */
+.center { top: 45%; left: 45%; }
+.top-left { top: 15%; left: 15%; }
+.top-right { top: 15%; right: 15%; }
+.bottom-left { bottom: 15%; left: 15%; }
+.bottom-right { bottom: 15%; right: 15%; }
+.center-left { top: 45%; left: 15%; }
+.center-right { top: 45%; right: 15%; }
+
+/* Faces du cube */
+.front  { transform: translateZ(50px); }
+.back   { transform: rotateY(180deg) translateZ(50px); }
+.left   { transform: rotateY(-90deg) translateZ(50px); }
+.right  { transform: rotateY(90deg) translateZ(50px); }
+.top    { transform: rotateX(90deg) translateZ(50px); }
+.bottom { transform: rotateX(-90deg) translateZ(50px); }
