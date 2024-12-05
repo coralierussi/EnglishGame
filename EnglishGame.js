@@ -1,8 +1,6 @@
 // Création de l'élément body
 const body = document.body;
 
-
-
 // DICE AND BTN LANCER
 
 let isRotating = false; // Indique si le dé est en train de tourner
@@ -55,15 +53,10 @@ container.appendChild(cube);
 const dice = document.createElement('button');
 dice.textContent = 'Lancer le dé';
 dice.classList.add('btn-de');
+dice.style.display = 'inline-block';
 body.appendChild(dice);
 
 // Fonction pour faire tourner le dé
-
-function rotateCubeRandomly() {
-  const randomX = Math.floor(Math.random() * 4 + 4) * 90; // Multiple de 90
-  const randomY = Math.floor(Math.random() * 4 + 4) * 90; // Multiple de 90
-  cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg)`;
-}
 function rotateCubeRandomly() {
   if (isRotating) return; // Bloque si une rotation est en cours
 
@@ -74,9 +67,9 @@ function rotateCubeRandomly() {
 
   cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg)`;
 
-setTimeout(() => {
-  isRotating = false; // Autorise une nouvelle rotation
-}, 500); // 2 secondes = durée de transition définie dans le CSS
+  setTimeout(() => {
+    isRotating = false; // Autorise une nouvelle rotation
+  }, 500); // Durée de transition définie dans le CSS
 }
 
 // Ajouter un événement au bouton pour lancer le dé
@@ -84,11 +77,7 @@ dice.addEventListener('click', () => {
   rotateCubeRandomly();
 });
 
-
-
-
 // TIMER + BTN LANCER/ REPONSE
-
 
 // Création des éléments
 const timerContainer = document.createElement('div');
@@ -100,12 +89,12 @@ timerDisplay.style.fontSize = '24px';
 
 const startButton = document.createElement('button');
 startButton.textContent = "Let's time";
-startButton.style.padding = '10px 20px';
+startButton.style.padding = '5px 10px';
 startButton.style.fontSize = '16px';
 
 const answeredButton = document.createElement('button');
 answeredButton.textContent = "Answer";
-answeredButton.style.padding = '10px 20px';
+answeredButton.style.padding = '5px 10px';
 answeredButton.style.fontSize = '16px';
 answeredButton.style.display = 'none'; // Caché par défaut
 
@@ -118,15 +107,22 @@ document.body.appendChild(timerContainer);
 let timeLeft = 30;
 let timerInterval = null;
 
+// Préchargement des sons
+const audioTimer = new Audio("links/tic-tac-27828 v2.mp3"); // Son du tic-tac
+const audioFinish = new Audio("links/boo-6377.mp3"); // Son de fin
+const audioAnswer = new Audio("links/CRWDApls_Applaudissements 1 (ID 2363)_LS.mp3"); // Son pour la réponse
+
 // Fonction pour mettre à jour le timer
 function updateTimer() {
   timerDisplay.textContent = `Time : ${timeLeft} sec`;
 
   if (timeLeft > 0) {
     timeLeft--;
+    audioTimer.play();
   } else {
     clearInterval(timerInterval);
     timerDisplay.textContent = "Finish !";
+    audioFinish.play();
   }
 }
 
@@ -137,7 +133,7 @@ startButton.addEventListener('click', () => {
   updateTimer(); // Mettre à jour immédiatement
   timerInterval = setInterval(updateTimer, 1000);
 
-  // Masquer le bouton "Démarrer le timer" et afficher "Répondu"
+  // Masquer le bouton "Démarrer le timer" et afficher "Répondre"
   startButton.style.display = 'none';
   answeredButton.style.display = 'inline-block';
 });
@@ -145,7 +141,11 @@ startButton.addEventListener('click', () => {
 // Action pour le bouton "Répondu"
 answeredButton.addEventListener('click', () => {
   clearInterval(timerInterval); // Arrête le timer
-  const audio = new Audio("links/CRWDApls_Applaudissements 1 (ID 2363)_LS.mp3"); // Exemple de son
-  audio.play();
-});
+  timerDisplay.textContent = "Answered!";
+  
+  // Arrêter le son du timer immédiatement
+  audioTimer.pause();
+  audioTimer.currentTime = 0;
 
+  audioAnswer.play();
+});
