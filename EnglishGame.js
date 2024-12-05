@@ -51,7 +51,7 @@ container.appendChild(cube);
 
 // Création du bouton "Lancer le dé"
 const dice = document.createElement('button');
-dice.textContent = 'Lancer le dé';
+dice.textContent = 'Roll the dice';
 dice.classList.add('btn-de');
 dice.style.display = 'inline-block';
 body.appendChild(dice);
@@ -66,11 +66,13 @@ function showTimerPage() {
   timerContainer.style.display = 'block';
 }
 
-// Fonction pour afficher la page du cube
 function showDicePage() {
   // Réinitialiser l'affichage du cube et du bouton
   container.style.display = 'inline-block';
   dice.style.display = 'inline-block';  // Afficher le bouton pour relancer le dé
+
+  // Réappliquer la transformation de rotation du cube
+  cube.style.transform = `rotateX(0deg) rotateY(0deg)`; // Exemple de réinitialisation
 
   // Masquer la section du timer
   timerContainer.style.display = 'none';
@@ -79,6 +81,7 @@ function showDicePage() {
   timeLeft = 30; // Réinitialiser le temps
   timerDisplay.textContent = ''; // Effacer le texte du timer
 }
+
 
 // Fonction pour revenir à la page du cube après la fin des audios
 function returnToCubePageAfterAudio(audio) {
