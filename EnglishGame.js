@@ -140,13 +140,11 @@ timerDisplay.style.fontSize = '24px';
 
 const startButton = document.createElement('button');
 startButton.textContent = "Let's time";
-startButton.style.padding = '5px 10px';
-startButton.style.fontSize = '16px';
+startButton.classList.add('btn-time');
 
 const answeredButton = document.createElement('button');
 answeredButton.textContent = "Answer";
-answeredButton.style.padding = '10px 20px';
-answeredButton.style.fontSize = '16px';
+answeredButton.classList.add('btn-answer');
 answeredButton.style.display = 'none'; // Caché par défaut
 
 timerContainer.appendChild(timerDisplay);
@@ -160,7 +158,8 @@ let timerInterval = null;
 
 // Fonction pour mettre à jour le timer
 function updateTimer() {
-  timerDisplay.textContent = `Time : ${timeLeft} sec`;
+  timerDisplay.textContent = `Time : ${timeLeft} s`;
+  timerDisplay.classList.add ('timer');
 
   if (timeLeft > 0) {
     timeLeft--;

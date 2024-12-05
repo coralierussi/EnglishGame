@@ -1,5 +1,8 @@
 body{
-  background-image: url(links/794055_13904-NP9DPE.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                    url('links/794055_13904-NP9DPE.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .logo{
 position: fixed;
@@ -10,14 +13,48 @@ left: 8%;
 
 .btn-de{
   background-color: #8C1C85;
-  padding: 5px 10px;
-  color: white ;
+  padding: 10px 15px;
+  color: white;
+  font-size: medium;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   position: absolute;
   top: 53%;
-  left: 37%;
+  left: 34%;
+}
+
+.btn-time{
+  background-color: #8C1C85;
+  padding: 10px 15px;
+  color: white;
+  font-size: medium;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 53%;
+  left: 34%;
+}
+
+.btn-answer{
+  background-color: #38A668;
+  padding: 10px 15px;
+  color: white ;
+  border: none;
+  font-size: medium;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 53%;
+  left: 34%;
+}
+
+.timer{
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  color: white;
 }
 
 #cube-container {
@@ -41,7 +78,7 @@ left: 8%;
   width: 100px;
   height: 100px;
   background-color: #F2CEAE;
-  border: 1px solid #ccc;
+  border: 2px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
